@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'django_filters',
     'cloudinary',
+    'drf_spectacular',
     
     # Local apps
     'articles',
@@ -143,13 +144,47 @@ STATIC_URL = 'static/'
 
 
 REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+    
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework_simplejwt.authentication.JWTAuthentication',
-    ]
+    ],
+    
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticatedOrReadOnly',
+    ],
+    
+    'DEFAULT_FILTER_BACKENDS': [
+        'django_filters.rest_framework.DjangoFilterBackend',
+        'rest_framework.filters.SearchFilter',
+        'rest_framework.filters.OrderingFilter',    
+    ],
+    
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10,
+    
+    
 }
 
 # Simple JWT configuration: set token lifetimes
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(hours=24),
     'REFRESH_TOKEN_LIFETIME': timedelta(hours=24),
+}
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'News API',
+    'DESCRIPTION': """A news API built with Django REST Framework
+    
+    Features:
+    - User registration and authentication
+    - CRUD operations for news articles
+    - Article categorization and filtering
+    - Article filtering, searching, and ordering
+    - API documentation with drf-spectacular
+    - Cloudinary integration for image uploads
+    - Comprehensive documentation with drf-spectacular
+    """,
+    'VERSION': '1.0.0',
+    
 }
