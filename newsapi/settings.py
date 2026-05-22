@@ -48,9 +48,11 @@ INSTALLED_APPS = [
     'cloudinary',
     'drf_spectacular',
     
+    
     # Local apps
     'articles',
     'accounts',
+    'mpesa',
 ]
 
 MIDDLEWARE = [
@@ -188,3 +190,7 @@ SPECTACULAR_SETTINGS = {
     'VERSION': '1.0.0',
     
 }
+MPESA_CONSUMER_KEY = config('MPESA_CONSUMER_KEY')
+MPESA_CONSUMER_SECRET = config('MPESA_CONSUMER_SECRET')
+MPESA_SHORTCODE = config('MPESA_SHORTCODE')
+MPESA_PASSKEY =  config('MPESA_PASSKEY')
