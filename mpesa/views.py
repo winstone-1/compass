@@ -7,7 +7,12 @@ import requests
 import base64
 from datetime import datetime
 from django.conf import settings
+from drf_spectacular.utils import extend_schema
 
+@extend_schema(
+    request=MpesaRequestSerializer,
+    responses={201: MpesaResponseSerializer}
+)
 @api_view(['POST'])
 def stk_push(request):
     serializer = MpesaRequestSerializer(data=request.data)

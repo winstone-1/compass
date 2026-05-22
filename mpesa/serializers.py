@@ -4,7 +4,7 @@ from .models import MpesaRequest, MpesaResponse
 class MpesaRequestSerializer(serializers.ModelSerializer):
     class Meta:
         model = MpesaRequest
-        fields = '__all__'
+        fields = ['phone_number', 'amount', 'account_reference', 'transaction_desc']
 
     def to_representation(self, instance):
         ret = super().to_representation(instance)
