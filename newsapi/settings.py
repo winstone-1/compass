@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'articles',
     'accounts',
     'mpesa',
+    'paystack',
 ]
 
 MIDDLEWARE = [
@@ -197,3 +198,4 @@ MPESA_PASSKEY =  config('MPESA_PASSKEY')
 
 PAYSTACK_SECRET_KEY = config('PAYSTACK_SECRET_KEY')
 PAYSTACK_PUBLIC_KEY = config('PAYSTACK_PUBLIC_KEY')
+PAYSTACK_CALLBACK_URL = config('PAYSTACK_CALLBACK_URL')
